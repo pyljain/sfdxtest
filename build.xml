@@ -20,6 +20,7 @@
 
  <!-- Test out deploy and retrieve verbs for package 'mypkg' -->
     <target name="deployprod">
+      <cleanXMLs />
       <!-- Upload the contents of the "mypkg" package -->
       <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="mdapi" rollbackOnError="true"/>
     </target>
@@ -128,4 +129,115 @@
     <target name="describeMetadata">
       <sf:describeMetadata username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}"/>
     </target>
+
+  <macrodef name="cleanXMLs">
+    <sequential>
+      <!-- Replace ContentWorkspaces in Profiles for Spring '17 -->
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;AllowUniversalSearch&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+
+       <!-- Replace ContentWorkspaces in Profiles for Spring '17 -->
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;AllowViewKnowledge&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;BulkMacrosAllowed&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;ManageEncryptionKeys&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;EditKnowledge&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;SubmitMacrosAllowed&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;FieldServiceAccess&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;ManageKnowledge&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;ManageKnowledgeImportExport&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;ManageSearchPromotionRules&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;SendExternalEmailAvailable&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;ShareInternalArticles&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+
+      <replaceregexp flags="g">
+        <regexp pattern="[\r\n\t\s]*&lt;userPermissions&gt;[\r\n\t\s]*&lt;enabled&gt;true&lt;/enabled&gt;[\r\n\t\s]*&lt;name&gt;WorkCalibrationUser&lt;/name&gt;[\r\n\t\s]*&lt;/userPermissions&gt;"/>
+        <substitution expression=""/>
+        <fileset dir="./mdapi/profiles">
+          <include name="*.profile" />
+        </fileset>
+      </replaceregexp>
+    </sequential>
+  </macrodef>
+
 </project>
